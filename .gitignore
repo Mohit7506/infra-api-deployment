@@ -4,3 +4,7 @@ terraform.tfstate
 .terraform.lock.hcl
 k3s-kubeconfig
 inventory.ini
+terraform-aws/inventory.ini
+k8s/k3s-kubeconfig
+ansible-imago/inventory.ini
+ansible-imago/k3s-kubeconfig

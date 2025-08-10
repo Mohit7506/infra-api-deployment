@@ -1,0 +1,2 @@
+#zabbix_server_ip: "{{ hostvars[groups['zabbix'][0]]['ansible_host'] if groups['zabbix'] is defined else '192.168.10.5' }}"
+zabbix_server_ip: "{{ hostvars[groups['zabbix'][0]].ansible_host | default(groups['zabbix'][0]) }}"

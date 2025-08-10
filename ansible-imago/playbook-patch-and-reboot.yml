@@ -1,0 +1,20 @@
+---
+- name: Apply OS patches and reboot when needed
+  hosts: webservers:lb:zabbix
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+      register: upgrade_result
+
+    - name: Reboot if upgrade applied
+      reboot:
+        msg: "Reboot initiated by Ansible after upgrade"
+        reboot_timeout: 600
+      when: upgrade_result is changed
+
